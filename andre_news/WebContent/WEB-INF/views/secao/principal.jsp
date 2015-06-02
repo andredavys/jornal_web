@@ -11,14 +11,15 @@
 
 	<h1>Bem vindo, ${usuario_logado.nome } </h1> 
 	<h1> Sessão principal </h1>
+
+
+	<c:forEach var="papel" items="${usuario_logado.roleList }">
+		<c:if test="${papel.role == 'Editor' }">
+			<a href="formulario_jornalista"> Cadastrar jornalista </a> <br>
+			<a href="formulario_secao"> Cadastrar seção </a> <br>
+			<a href="formulario_classificado"> Cadastrar classificado</a>
+		</c:if>
+	</c:forEach>
 	
-	<c:if test="${usuario_logado.roleList is not empty }">
-		<c:forEach var="papel" items="${usuario_logado.roleList }">
-			<c:if test="${papel.role = 'Editor' }">
-				<a href=""> Cadastrar jornalista </a>
-				
-			</c:if>
-		</c:forEach>
-	</c:if>
 </body>
 </html>

@@ -25,7 +25,7 @@ public class UsuarioController {
 	private UsuarioDAO uDAO;
 	@Autowired
 	private RolesDAO roleDAO;
-	
+
 	@RequestMapping("formulario_usuario")
 	public String formularioInserir(){
 		return "usuarios/formulario_usuario";
@@ -64,7 +64,7 @@ public class UsuarioController {
 
 				System.out.println("nome >"+usu.getNome());
 				System.out.println("nome >>"+uDAO.getUsuario(usu).getNome());
-				return "sessao/principal";
+				return "secao/principal";
 			}
 			else{
 				System.out.println("veio aqui");

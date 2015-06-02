@@ -37,8 +37,8 @@ public class Classificado {
 	@Column(name="data_oferta")
 	private Date dataOferta;
 
-	@ManyToOne(optional = false)
-	@JoinColumn(name = "id_autor", referencedColumnName = "id")
+	@ManyToOne(optional = true)
+	@JoinColumn(name = "id_autor", referencedColumnName = "id", nullable=true)
 	private Usuario usuario;
 
 	public long getId() {

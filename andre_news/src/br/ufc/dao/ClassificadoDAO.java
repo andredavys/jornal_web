@@ -1,5 +1,7 @@
 package br.ufc.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -24,5 +26,10 @@ public class ClassificadoDAO {
 	
 	public void alterar(Classificado cla){
 		this.manager.merge(cla);
+	}
+	
+	public List<Classificado> listar(){
+		String hql = "SELECT c FROM Classificado c";
+		return this.manager.createQuery(hql, Classificado.class).getResultList();
 	}
 }
