@@ -5,9 +5,13 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import org.springframework.stereotype.Repository;
+
 import br.ufc.model.Noticia;
+import br.ufc.model.Secao;
 import br.ufc.model.Usuario;
 
+@Repository
 public class NoticiaDAO{
 
 	@PersistenceContext
@@ -30,5 +34,4 @@ public class NoticiaDAO{
 		String hql = "SELECT n FROM Noticia n";
 		return this.manager.createQuery(hql, Noticia.class).getResultList();
 	}
-
 }

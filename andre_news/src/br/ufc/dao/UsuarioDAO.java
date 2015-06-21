@@ -1,5 +1,7 @@
 package br.ufc.dao;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -7,6 +9,7 @@ import javax.persistence.PersistenceContext;
 
 import org.springframework.stereotype.Repository;
 
+import sun.misc.BASE64Encoder;
 import br.ufc.model.Usuario;
 
 @Repository
@@ -39,5 +42,16 @@ public class UsuarioDAO{
 		if(!res.isEmpty())
 			return (Usuario) this.manager.createQuery(hql).getResultList().get(0);
 		return null;
+	}
+	
+	public String criptografarSenha(String senha){
+		try {
+			MessageDigest algorithm = MessageDigest.getInstance("MD5");
+			BASE64Encoder encoder = new BASE64Encoder();
+			return encoder.encode(algorithm.digest());
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+			return senha;
+		}
 	}
 }

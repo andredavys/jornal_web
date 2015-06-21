@@ -28,6 +28,12 @@ public class Secao {
 	@OneToMany(mappedBy="secao", targetEntity = Noticia.class, fetch=FetchType.EAGER)
 	private Collection<Noticia> noticias;
 	
+	public Collection<Noticia> getNoticias() {
+		return noticias;
+	}
+	public void setNoticias(Collection<Noticia> noticias) {
+		this.noticias = noticias;
+	}
 	public String getTitulo() {
 		return titulo;
 	}
@@ -40,10 +46,16 @@ public class Secao {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	public long getId() {
+	public long getIdSecao() {
 		return idSecao;
 	}
-	public void setId(long id) {
-		this.idSecao = id;
+	public void setIdSecao(long idSecao) {
+		this.idSecao = idSecao;
 	}
+	@Override
+	public String toString() {
+		return "Secao [idSecao=" + idSecao + ", titulo=" + titulo
+				+ ", descricao=" + descricao + ", noticias=" + noticias + "]";
+	}
+	
 }

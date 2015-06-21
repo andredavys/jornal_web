@@ -47,6 +47,12 @@ public class Noticia {
 	@JoinColumn(name="id_autor")
 	private Usuario usuario;
 	
+	public Usuario getUsuario() {
+		return usuario;
+	}
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
 	public long getId_noticia() {
 		return idNoticia;
 	}
@@ -77,4 +83,16 @@ public class Noticia {
 	public void setData_noticia(Date data_noticia) {
 		this.data = data_noticia;
 	}
+	public Secao getSecao() {
+		return secao;
+	}
+	public void setSecao(Secao secao) {
+		this.secao = secao;
+	}
+	@Override
+	public String toString() {
+		return "Noticia [idNoticia=" + idNoticia + ", titulo=" + titulo
+				+ ", subtitulo=" + subtitulo + ", texto=" + texto + "]";
+	}
+	
 }

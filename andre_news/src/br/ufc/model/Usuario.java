@@ -84,5 +84,10 @@ public class Usuario {
 	public void setRoleList(Collection<Role> roleList){
 		this.roleList = roleList;
 	}
+	@Override
+	public String toString() {
+		return "Usuario [id=" + id + ", login=" + login + ", senha=" + senha
+				+ ", nome=" + nome + ", email=" + email + "]";
+	}
 	
 }

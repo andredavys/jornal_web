@@ -5,21 +5,109 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Sessao principal</title>
+<title>Seção principal</title>
 </head>
 <body>
 
-	<h1>Bem vindo, ${usuario_logado.nome } </h1> 
-	<h1> Sessão principal </h1>
+	<ul id="menu">
+		<div id="menu-div">
+			<li class='item-menu'> <a href="pagina_principal">Home</a></li>
+			<li class='item-menu'> Funcionalidades
+				<ul id="submenu">
+					<c:forEach var="papel" items="${usuario_logado.roleList }">
+						<c:if test="${papel.role == 'Editor' }">
+							<li><a href="formulario_jornalista"> Cadastrar jornalista </a></li>
+							<li><a href="formulario_secao"> Cadastrar seção </a></li>
+							<li><a href="formulario_classificado"> Cadastrar classificado</a></li>
+						</c:if>
+						
+						<c:if test="${papel.role == 'Jornalista' }">
+							<li><a href="formulario_noticia">Cadastrar notícia</a></li>
+							<li><a>Apagar notícia</a></li>
+						</c:if>
 
+					</c:forEach>
+				</ul>
+			</li>
+			<li class='item-menu'>Seção
+			
+				<ul id="submenu">
+					<c:forEach var="secao" items="${secoes }">
+						<li> ${secao.titulo }</li>
+					</c:forEach>
+				</ul>
+				
+			</li>
+			<li class='item-logado'><a href="index.jsp">Logout</a></li>
+			<li class='item-logado'> ${usuario_logado.nome}</li>
 
-	<c:forEach var="papel" items="${usuario_logado.roleList }">
-		<c:if test="${papel.role == 'Editor' }">
-			<a href="formulario_jornalista"> Cadastrar jornalista </a> <br>
-			<a href="formulario_secao"> Cadastrar seção </a> <br>
-			<a href="formulario_classificado"> Cadastrar classificado</a>
-		</c:if>
-	</c:forEach>
+		</div>
+	</ul>
+	
+	
+	
+	<style>
+		#submenu{
+			margin-top:5px;
+			width:100px;
+			background-color: #ffffff;
+			border:1px solid black;
+			position:absolute;
+			display:none;
+		}
+		#submenu li{
+			width:100px;
+			display:list-item;
+			cursor:pointer;
+		}
+		#menu{
+			margin-left:-8px;
+			margin-top:-8px;
+			margin-right:-8px;
+			padding:10px;
+			background-color: #cccccc;
+		}
+		#menu li.item-menu{
+			float: left;
+			background-color: #cccccc;
+			display:inline;
+			position:relative;	
+			padding: 5px;
+			transition: all 0.3s;
+		}
+		#menu li.item-logado{
+			font-size: 10px;
+			background-color:#cccccc;
+			display:inline;
+			margin-top:-8px;
+			margin-right:-8px;
+			padding:10px;
+			float: right;
+		}
+		#menu li.item-logado:hover{
+			background-color:#ffffff;
+			transform: scale(1.2,1.1);
+			transition: all 0.3s;
+		}
+		#menu li.item-menu:hover{
+			background-color:#ffffff;
+			transform: rotateY(360deg);
+			transition: all 0.2s;
+		}
+		#menu li.item-menu:hover #submenu{
+			display:block;
+		}
+		#submenu li{
+			width:130px;
+			margin-left:-40px;
+			list-style:none;
+			padding:5px;
+		}
+		#submenu li:hover{
+			background-color:#dddddd;
+		}
+		
+	</style>
 	
 </body>
 </html>
