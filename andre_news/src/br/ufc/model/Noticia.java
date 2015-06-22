@@ -31,6 +31,8 @@ public class Noticia {
 	private String subtitulo;
 	@Column(name="texto", nullable = false)
 	private String texto;
+	@Column(name="caminho", nullable = false)
+	private String caminho;
 	
 	@Column(name="data_noticia")
 	@Temporal(TemporalType.DATE)
@@ -88,6 +90,12 @@ public class Noticia {
 	}
 	public void setSecao(Secao secao) {
 		this.secao = secao;
+	}
+	public String getCaminho() {
+		return caminho;
+	}
+	public void setCaminho(String caminho) {
+		this.caminho = caminho;
 	}
 	@Override
 	public String toString() {

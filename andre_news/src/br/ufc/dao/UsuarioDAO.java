@@ -10,6 +10,7 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 
 import sun.misc.BASE64Encoder;
+import br.ufc.model.Secao;
 import br.ufc.model.Usuario;
 
 @Repository
@@ -34,6 +35,10 @@ public class UsuarioDAO{
 	public List<Usuario> listar() {
 		String hql = "SELECT u FROM Usuario u";
 		return this.manager.createQuery(hql, Usuario.class).getResultList();
+	}
+	public Usuario buscarPorId(Usuario usuario){
+		Usuario usu = this.manager.find(Usuario.class, usuario.getId());
+		return usu;
 	}
 
 	public Usuario getUsuario(Usuario usu){

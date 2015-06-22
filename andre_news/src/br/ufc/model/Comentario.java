@@ -17,27 +17,28 @@ public class Comentario {
 	@GeneratedValue
 	private long id;
 	
-	@Column(name = "id_autor", nullable = false)
-	private long id_autor;
-	
 	@Column(name = "texto")
 	private String texto;
+	
+	@ManyToOne(optional=false)
+	@JoinColumn(name="id_autor",referencedColumnName="id")
+	private Usuario autor;
 	
 	@ManyToOne(optional = false)
 	@JoinColumn(name="id_noticia", referencedColumnName = "id_noticia")
 	private Noticia noticia;
 	
+	public Noticia getNoticia() {
+		return noticia;
+	}
+	public void setNoticia(Noticia noticia) {
+		this.noticia = noticia;
+	}
 	public long getId() {
 		return id;
 	}
 	public void setId(long id) {
 		this.id = id;
-	}
-	public long getId_autor() {
-		return id_autor;
-	}
-	public void setId_autor(long id_autor) {
-		this.id_autor = id_autor;
 	}
 	public String getTexto() {
 		return texto;
@@ -45,5 +46,13 @@ public class Comentario {
 	public void setTexto(String texto) {
 		this.texto = texto;
 	}
+	
+	public Usuario getAutor() {
+		return autor;
+	}
+	public void setAutor(Usuario autor) {
+		this.autor = autor;
+	}
+
 
 }

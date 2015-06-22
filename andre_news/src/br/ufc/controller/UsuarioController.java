@@ -1,7 +1,11 @@
 package br.ufc.controller;
 
 
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.servlet.http.HttpSession;
 
@@ -10,6 +14,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import br.ufc.dao.RolesDAO;
 import br.ufc.dao.SecaoDAO;
@@ -97,8 +104,8 @@ public class UsuarioController {
 		return "usuarios/formulario_jornalista";
 	}
 	
-	@RequestMapping("cadastrar_jornalista")
-	public String cadastrarJornalista(Usuario usu){
+	@RequestMapping(value="cadastrar_jornalista", method=RequestMethod.POST)
+	public String cadastrarJornalista(Usuario usu, @RequestParam("file") MultipartFile file){
 		Role role = new Role();
 		role.setId(2);
 	
@@ -109,6 +116,25 @@ public class UsuarioController {
 		
 		String novaSenha = uDAO.criptografarSenha(usu.getSenha());
 		usu.setSenha(novaSenha);
+		
+		if (!file.isEmpty()) {
+			System.out.println("\n\n >> TA AQUI");
+			try {
+				String nomeImg = new Date().getTime()+"-"+file.getOriginalFilename();
+				String imagem = "/home/andredavys/imagens_jornal/"+nomeImg;
+				usu.setCaminho(nomeImg);
+				byte[] bytes = file.getBytes();
+				BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(new File(imagem)));
+				stream.write(bytes);
+				stream.close();
+				System.out.println("\n\n >>>>>>>>>>>>\n TA NO TRY");
+			} catch (Exception e) {
+				e.printStackTrace();
+				return "";
+			}
+		} else {
+			return "";
+		}
 		
 		usu.setRoleList(papeis);
 		

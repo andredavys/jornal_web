@@ -4,16 +4,46 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
 <title>Cadastrando Jornalista</title>
 </head>
 <body>
-	<form action="cadastrar_jornalista">
-	Nome:  <input type="text" name="nome"> <br><br>
-	Login: <input type="text" name="login"> <br><br>
-	Senha: <input type="password" name="senha"> <br><br>
-	Email: <input type="text" name="email"> <br><br>
-	<input type="submit" value="Cadastrar"> <br><br>
-</form>
+
+<center><h1> Cadastrando Jornalista</h1></center>
+
+<div class="container">
+	<form action="cadastrar_jornalista" enctype="multipart/form-data" method="post">
+	<br> <br>
+	    <div class="form-group">
+	    	<label for="nome"> Nome: </label>
+			<input type="text" name="nome"> <br><br> 
+		</div>
+		<div class="form-group">
+			<label for="login"> Login: </label>
+			<input type="text" name="login"> <br><br>
+		</div>
+		<div class="form-group">
+			<label for="senha"> Senha: </label>
+			<input type="password" name="senha"> <br><br>
+		</div>
+		<div class="form-group">
+			<label for="email"> Email: </label>
+			<input type="text" name="email"> <br><br>
+		</div>
+		
+		
+		<div class="form-group">
+			<label for="exampleInputEmail1">Imagem</label> 
+			<input type="file" name="file">		
+		</div>
+		
+		<button type="submit" class="btn btn-default"> Cadastrar </button><br>
+	</form>
+</div>
 	
 </body>
 </html>

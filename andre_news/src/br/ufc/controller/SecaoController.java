@@ -2,6 +2,8 @@ package br.ufc.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -49,5 +51,11 @@ public class SecaoController {
 	@RequestMapping("formulario_secao")
 	public String formularioSecao(){
 		return "secao/formulario_secao";
+	}
+	
+	@RequestMapping("logout")
+	public String logout(HttpSession session){
+		session.setAttribute("usuario_logado", null);
+		return "../../home";
 	}
 }

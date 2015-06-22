@@ -8,6 +8,7 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 
 import br.ufc.model.Classificado;
+import br.ufc.model.Secao;
 
 @Repository
 public class ClassificadoDAO {
@@ -31,5 +32,9 @@ public class ClassificadoDAO {
 	public List<Classificado> listar(){
 		String hql = "SELECT c FROM Classificado c";
 		return this.manager.createQuery(hql, Classificado.class).getResultList();
+	}
+	public Classificado buscarPorId(Classificado classificado){
+		Classificado c = this.manager.find(Classificado.class, classificado.getId());
+		return c;
 	}
 }

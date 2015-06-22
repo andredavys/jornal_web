@@ -22,7 +22,7 @@ public class NoticiaDAO{
 	}
 
 	public void remover(Noticia noticia) {
-		Usuario n = this.manager.find(Usuario.class, noticia.getId_noticia());
+		Noticia n = this.manager.find(Noticia.class, noticia.getId_noticia());
 		this.manager.remove(n);
 	}
 
@@ -33,5 +33,10 @@ public class NoticiaDAO{
 	public List<Noticia> listar() {
 		String hql = "SELECT n FROM Noticia n";
 		return this.manager.createQuery(hql, Noticia.class).getResultList();
+	}
+	
+	public Noticia buscarPorId(Noticia noticia){
+		Noticia not = this.manager.find(Noticia.class, noticia.getId_noticia());
+		return not;
 	}
 }

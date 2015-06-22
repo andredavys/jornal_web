@@ -32,9 +32,14 @@ public class Usuario {
 	private String nome;
 	@Column(name="email")
 	private String email;
-	
+	@Column(name="caminho")
+	private String caminho;
+
 	@OneToOne(optional=false,cascade=CascadeType.ALL, mappedBy="usuario", targetEntity=Noticia.class)
 	private Noticia noticia;
+	
+	@OneToMany(mappedBy="autor",targetEntity=Comentario.class,fetch=FetchType.LAZY, cascade = CascadeType.ALL)
+	Collection<Comentario> comentarios;
 	
 	@ManyToMany(fetch=FetchType.EAGER)
 	@JoinTable(
@@ -89,5 +94,27 @@ public class Usuario {
 		return "Usuario [id=" + id + ", login=" + login + ", senha=" + senha
 				+ ", nome=" + nome + ", email=" + email + "]";
 	}
+	public Collection<Comentario> getComentarios() {
+		return comentarios;
+	}
+	public void setComentarios(Collection<Comentario> comentarios) {
+		this.comentarios = comentarios;
+	}
+	public String getCaminho() {
+		return caminho;
+	}
+	public void setCaminho(String caminho) {
+		this.caminho = caminho;
+	}
 	
+	public boolean is(String roleName){
+		getRoleList();
+		for (Role r :this.roleList) {
+			if(r.getRole().equals(roleName)){
+				return true;
+			}
+		}
+		return false;
+	}
 }
+

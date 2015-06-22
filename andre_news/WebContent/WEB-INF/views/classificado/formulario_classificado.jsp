@@ -4,15 +4,42 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
 <title>Cadastrando Classificado</title>
 </head>
 <body>
-<form action="cadastrar_classificado">
-	Titulo: <input type="text" name="titulo"> <br><br>
-	Texto: <input type="text" width="2" height="2" name="texto"> <br><br>
-	Preco: <input type="text" name="preco"> <br><br>
-	Telefone: <input type="text" name="telefone"> <br><br>
-	<input type="submit"  value="cadastrar"> 
-</form>
+
+<center><h1> Cadastrando Classificado</h1></center>
+
+<div class="container">
+	<form action="cadastrar_classificado" method="post">
+	<br> <br>
+	    <div class="form-group">
+	    	<label for="titulo"> Titulo: </label>
+			<input type="text" name="titulo"> <br><br> 
+		</div>
+		<div class="form-group">
+			<label for="texto"> Texto: </label>
+			<input type="text" name="texto"> <br><br>
+		</div>
+		<div class="form-group">
+			<label for="preco"> Preco </label>
+			<input type="text" name="preco"> <br><br>
+		</div>
+		<div class="form-group">
+			<label for="telefone"> Telefone: </label>
+			<input type="text" name="telefone"> <br><br>
+		</div>
+		
+		<button type="submit" class="btn btn-default"> Cadastrar </button><br>
+	</form>
+</div>
+
+
+
 </body>
 </html>

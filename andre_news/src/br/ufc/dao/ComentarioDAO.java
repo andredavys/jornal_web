@@ -27,4 +27,9 @@ public class ComentarioDAO {
 		String hql = "SELECT c FROM Comentario c";
 		return this.manager.createQuery(hql, Comentario.class).getResultList();
 	}
+	
+	public List<Comentario> listarPorNoticia(Long id_noticia){
+		String hql = "SELECT c FROM Comentario c WHERE noticia='"+id_noticia+"'";
+		return this.manager.createQuery(hql, Comentario.class).getResultList();
+	}
 }

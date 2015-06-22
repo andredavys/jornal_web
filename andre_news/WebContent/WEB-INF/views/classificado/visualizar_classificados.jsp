@@ -9,12 +9,24 @@
 </head>
 <body>
 	
-	<c:forEach var="classificado" items="classificados">
-		<h1> ${classificado.titulo } </h1> <br>
-		<h4> ${classificado.texto }</h4> <br>
+	<c:forEach var="classificado" items="${classificados}">
+		<h1> ${classificado.titulo } </h1>
+		<h4> ${classificado.texto }</h4>
+		<h5>Preço inicial: ${classificado.preco }</h5>
+		<h5>Telefone: ${classificado.telefone }</h5>
+		<h5>Melhor oferta: ${classificado.melhor_oferta }</h5>
+		<h5>Data: ${classificado.dataOferta }</h5>
+		<h5>Autor: ${classificado.usuario.nome }</h5>
 		
+		<form action="inserir_oferta">
+			<input type="hidden" value="${classificado.id }" name="id_classificado">
+			<input type="submit" value="Inserir oferta">
+		</form> 
+		<hr width="100%">
 		<br><br>
 	</c:forEach>
+	
+	<a href="index.jsp"> voltar para menu principal</a>
 		
 </body>
 </html>

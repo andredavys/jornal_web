@@ -22,23 +22,23 @@
 						</c:if>
 						
 						<c:if test="${papel.role == 'Jornalista' }">
-							<li><a href="formulario_noticia">Cadastrar notícia</a></li>
-							<li><a>Apagar notícia</a></li>
+							<li><a href="formulario_noticia?id=${usuario_logado.id }">Cadastrar notícia</a></li>
 						</c:if>
 
 					</c:forEach>
 				</ul>
 			</li>
-			<li class='item-menu'>Seção
-			
+			<li class='item-menu'> Manchetes
 				<ul id="submenu">
-					<c:forEach var="secao" items="${secoes }">
-						<li> ${secao.titulo }</li>
-					</c:forEach>
+					<a href="manchetes">Visualizar Manchetes</a>
 				</ul>
-				
 			</li>
-			<li class='item-logado'><a href="index.jsp">Logout</a></li>
+			<li class='item-menu'> Classificados
+				<ul id="submenu">
+					<a href="listar_classificados"> Visualizar classificados </a>
+				</ul>
+			</li>
+			<li class='item-logado'><a href="logout">Logout</a></li>
 			<li class='item-logado'> ${usuario_logado.nome}</li>
 
 		</div>

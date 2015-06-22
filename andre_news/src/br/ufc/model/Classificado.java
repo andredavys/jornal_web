@@ -96,6 +96,15 @@ public class Classificado {
 	public void setDataOferta(Date data_oferta) {
 		this.dataOferta = data_oferta;
 	}
-	
+	public Usuario getUsuario() {
+		return usuario;
+	}
 
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+	public double getMelhorOferta() {
+		return melhorOferta;
+	}
 }

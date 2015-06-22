@@ -8,6 +8,7 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 
 import br.ufc.model.Role;
+import br.ufc.model.Secao;
 
 @Repository
 public class RolesDAO {
@@ -36,5 +37,11 @@ public class RolesDAO {
 	public Role getRole(Role r){
 		String hql = "SELECT r FROM Role r WHERE r.id='"+r.getId()+"'";
 		return (Role) this.manager.createQuery(hql).getResultList().get(0);
-	}	
+	}
+	
+	public Role buscarPorId(Role role){
+		Role r = this.manager.find(Role.class, role.getId());
+		return r;
+	}
+	
 }
